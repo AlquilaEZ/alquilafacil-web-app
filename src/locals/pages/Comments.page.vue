@@ -9,6 +9,7 @@ import { CommentsApiService } from '../services/comments-api.service';
 import FooterComponent from '../../public/components/Footer.component.vue';
 
 
+
 const route = useRoute();
 const comments = ref([]);
 const commentsApiService = new CommentsApiService();
