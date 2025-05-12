@@ -35,6 +35,8 @@ onMounted(async() => {
   localStorage.removeItem('reservation');
 });
 
+
+
 const postponeReservation = async () => {
   try {
     const currentStart = new Date(reservation.value.startDate);
