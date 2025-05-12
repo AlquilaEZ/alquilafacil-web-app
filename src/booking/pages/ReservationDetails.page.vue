@@ -35,6 +35,8 @@ onMounted(async() => {
   localStorage.removeItem('reservation');
 });
 
+
+
 const postponeReservation = async () => {
   try {
     const currentStart = new Date(reservation.value.startDate);
@@ -68,6 +70,7 @@ const cancelReservation = async () => {
     alert('Error al cancelar la reserva. Por favor, inténtelo de nuevo más tarde.');
   }
 };
+
 
 
 </script>
