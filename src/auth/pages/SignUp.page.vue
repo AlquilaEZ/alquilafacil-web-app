@@ -190,7 +190,7 @@ const goToSignIn = () => {
       <div class="flex items-center w-full md:col-span-2 gap-4">
         <input type="checkbox" v-model="checkTermsAndConditions" class="w-8 h-8" required />
         <label class="text-white">
-          Al registrarse, acepta los <a href="https://alquiladorez.github.io/AlquilaFacil-LandingPage/service-terms.html"  target="_blank" class="font-bold">Términos y condiciones</a> y la <a href="https://alquiladorez.github.io/AlquilaFacil-LandingPage/privacy-policy.html"  target="_blank" class="font-bold">Política de privacidad</a>.
+          Al registrarse, acepta los <a href="#" class="font-bold">Términos y condiciones</a> y la <a href="#" class="font-bold">Política de privacidad</a>.
         </label>
       </div>
 
@@ -210,7 +210,7 @@ const goToSignIn = () => {
       <button type="button" class="bg-(--secondary-color) text-white p-4 rounded-md hover:cursor-pointer md:col-span-2" @click="goToSignIn">
         Iniciar sesión
       </button>
-      <!--
+
       <p class="text-center text-base text-white md:col-span-2">
         o regístrate con:
       </p>
@@ -219,7 +219,6 @@ const goToSignIn = () => {
         <FacebookSignUpButtonComponent />
         <GoogleSignUpButtonComponent />
       </div>
-      -->
     </form>
   </section>
 </template>

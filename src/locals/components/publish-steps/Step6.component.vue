@@ -12,6 +12,9 @@ const emit = defineEmits([
 
 
 const openUploadWidget = async () => {
+  emit('update:photoUrl', 'https://res.cloudinary.com/ducsr2p2w/image/upload/v1745502933/casa-de-playa_cwyb1z.jpg');
+
+  /*
   try {
     const secureUrl = await cloudinaryWidget();
     console.log("URL segura:", secureUrl);
@@ -19,7 +22,7 @@ const openUploadWidget = async () => {
   } catch (error) {
     console.error("Error al subir imagen:", error);
   }
-  
+  */
 }
 
 </script>

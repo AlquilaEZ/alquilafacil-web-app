@@ -33,16 +33,12 @@ const updateProfile = async () => {
 </script>
 
 <template>
-  <div class="w-full p-4 flex flex-col gap-10">
+  <div v-if="profileResponse" class="w-full p-4 flex flex-col gap-10">
     <h2 class="text-xl md:text-4xl font-bold text-center mb-6">
-      Bienvenido{{ profileResponse ? `, ${profileResponse.fullName}` : '' }}
+      Bienvenido, {{ profileResponse.fullName }}
     </h2>
 
-    <div v-if="!profileResponse" class="text-center text-gray-500 text-xl py-10">
-      Cargando datos del perfil...
-    </div>
-
-    <form v-else class="grid grid-cols-1 md:grid-cols-2 gap-10 xl:gap-18 justify-center items-center">
+    <form class="w-full grid grid-cols-1 md:grid-cols-2 gap-18 justify-center items-center">
       <EditableProfileField
         v-model="profileResponse.name"
         label="Nombre"
@@ -76,10 +72,9 @@ const updateProfile = async () => {
         label="Código de cuenta interbancaria"
       />
       <button 
-        type="button" 
-        @click="updateProfile"
-        class="bg-(--secondary-color) text-white p-4 rounded-md hover:cursor-pointer md:col-span-2"
-      >
+      type="button" 
+      @click="updateProfile"
+      class="bg-(--secondary-color) text-white p-4 rounded-md hover:cursor-pointer md:col-span-2">
         Guardar cambios
       </button>
     </form>
