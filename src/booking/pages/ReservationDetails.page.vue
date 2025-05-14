@@ -35,8 +35,6 @@ onMounted(async() => {
   localStorage.removeItem('reservation');
 });
 
-
-
 const postponeReservation = async () => {
   try {
     const currentStart = new Date(reservation.value.startDate);
@@ -70,7 +68,6 @@ const cancelReservation = async () => {
     alert('Error al cancelar la reserva. Por favor, inténtelo de nuevo más tarde.');
   }
 };
-
 
 
 </script>
@@ -154,7 +151,7 @@ const cancelReservation = async () => {
             class="bg-(--primary-color) rounded-md py-5 text-white text-xl hover:cursor-pointer hover:bg-red-600 transition duration-300 ease-in-out"
           >Cancelar reserva</button>
         </div>
-        <CreateCommentComponent :localId="local.id" v-if="new Date(reservation.endDate) < new Date() && local.userId !== userId" />
+        <CreateCommentComponent :localId="local.id" v-if="new Date(reservation.endDate) < new Date()" />
       </div>
     </div>
   </main>
