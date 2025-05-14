@@ -9,6 +9,7 @@ import { useAuthenticationStore } from '../../auth/services/authentication.store
 import { ReservationsApiService } from '../../booking/services/reservations-api.service';
 import { ProfilesApiService } from '../../profile/services/profiles-api.service';
 import FooterComponent from '../../public/components/Footer.component.vue';
+import { cloudinaryWidget } from '../../shared/components/cloudinary-widget';
 
 const route = useRoute();
 const authenticationStore = useAuthenticationStore();
@@ -60,17 +61,13 @@ const totalAmountToPay = computed(() => {
 });
 
 const openUploadWidget = async () => {
-  voucherImageUrl.value = 'https://res.cloudinary.com/ducsr2p2w/image/upload/v1745502933/casa-de-playa_cwyb1z.jpg';
-
-  /*
   try {
     const secureUrl = await cloudinaryWidget();
     console.log("URL segura:", secureUrl);
-    emit('update:photoUrl', secureUrl);
+    voucherImageUrl.value = secureUrl
   } catch (error) {
     console.error("Error al subir imagen:", error);
   }
-  */
 };
 
 const reserveLocal = async () => {
