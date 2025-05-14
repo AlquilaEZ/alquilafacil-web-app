@@ -9,6 +9,7 @@ import { ProfilesApiService } from '../../profile/services/profiles-api.service'
 import { SubscriptionsApiService } from '../services/subscriptions-api.service';
 import { SubscriptionRequest } from '../model/subscription.request';
 import { useAuthenticationStore } from '../../auth/services/authentication.store';
+import { cloudinaryWidget } from '../../shared/components/cloudinary-widget';
 
 const route = useRoute();
 const router = useRouter();
@@ -31,7 +32,7 @@ const openUploadWidget = async () => {
   try {
     const secureUrl = await cloudinaryWidget();
     console.log("URL segura:", secureUrl);
-    emit('update:photoUrl', secureUrl);
+    voucherImageUrl.value = secureUrl;
   } catch (error) {
     console.error("Error al subir imagen:", error);
   }
