@@ -1,36 +1,44 @@
 <script setup>
 import { ref } from 'vue';
 
-// Lista de preguntas frecuentes
 const faqs = ref([
   {
-    question: "¿Qué es AlquilaFácil?",
-    answer: "AlquilaFácil es una plataforma que conecta a propietarios e inquilinos de manera rápida y segura.",
-  },
-  {
-    question: "¿Qué hago si no encuentro propiedades disponibles en mi zona?",
-    answer: "Recomendamos ajustar los filtros de búsqueda para encontrar más opciones.",
-  },
-  {
-    question: "¿Cómo puedo registrar mi propiedad?",
-    answer: "Puedes registrar tu propiedad completando los detalles de tu propiedad en la sección 'Registrar espacio'.",
-  },
-  {
-    question: "¿Qué tipos de locales puedo publicar?",
-    answer: "Puedes publicar cualquier tipo de local, desde apartamentos y casas hasta oficinas o locales comerciales.",
-  },
-  {
-    question: "¿Es necesario pagar para usar AlquilaFácil?",
-    answer: "Crear una cuenta es gratuito. Sin embargo, ofrecemos planes premium con beneficios adicionales.",
-  },
-  {
-    question: "¿Cómo gestiono las reservas que han hecho en mi propiedad?",
+    question: "¿Cómo reservo un espacio?",
     answer:
-      "Dentro de la sección 'Calendario', podrás ver todas las reservas que han hecho en tus propiedades. Las que se encuentran resaltadas de color azul se pueden modificar o cancelar. Sin embargo, las reservas resaltadas de amarillo, que son hechas por usuarios premium, no se pueden modificar.",
+      "Primero debes iniciar sesión, seleccionar el espacio deseado y completar la información de reserva (fecha y horario). Luego deberás realizar el depósito al número de cuenta indicado y subir el comprobante de pago para su validación.",
+  },
+  {
+    question: "¿Qué sucede después de subir el comprobante de pago?",
+    answer:
+      "El propietario del espacio validará el comprobante. Si todo es correcto, la reserva quedará confirmada. En caso de problemas o fraude, el propietario puede rechazarla.",
+  },
+  {
+    question: "¿AlquilaFácil gestiona el dinero o reembolsa pagos?",
+    answer:
+      "No. AlquilaFácil no retiene ni transfiere dinero. Todos los pagos se hacen directamente al propietario, por lo que es importante verificar bien los datos antes de transferir.",
+  },
+  {
+    question: "¿Cómo activo una suscripción premium?",
+    answer:
+      "Realiza el pago correspondiente y sube el comprobante. Un administrador validará la información y activará tu suscripción manualmente.",
+  },
+  {
+    question: "¿Qué beneficios tengo como usuario premium?",
+    answer:
+      "Acceso prioritario a espacios, reservas protegidas que no pueden ser modificadas por el propietario, y funciones adicionales dentro de la plataforma.",
+  },
+  {
+    question: "¿Qué hago si sospecho de un fraude?",
+    answer:
+      "Puedes reportar el local desde la sección de detalles. El equipo revisará el caso y tomará medidas si corresponde. Reportes falsos pueden llevar a sanciones.",
+  },
+  {
+    question: "¿Puedo posponer una reserva?",
+    answer:
+      "Sí, pero solo si la reserva no es premium. Las reservas estándar se pueden posponer desde el calendario si están resaltadas en azul en un máximo de una hora.",
   },
 ]);
 
-// Controla cuál item está expandido
 const expandedIndex = ref(null);
 
 const toggleFaq = (index) => {
@@ -39,14 +47,14 @@ const toggleFaq = (index) => {
 </script>
 
 <template>
-  <div class="px-4 sm:px-6 md:px-12 lg:px-24 py-10 min-h-[80dvh] ">
-    <h3 class="text-xl font-semibold text-center mb-8">Preguntas frecuentes</h3>
+  <div class="px-4 sm:px-6 md:px-12 lg:px-24 py-10 min-h-[80dvh]">
+    <h3 class="text-xl font-semibold text-center mb-8">Soporte - Preguntas frecuentes</h3>
 
     <div class="max-w-3xl mx-auto space-y-4">
       <div
         v-for="(faq, index) in faqs"
         :key="index"
-        class="border border-gray-300  rounded-md overflow-hidden"
+        class="border border-gray-300 rounded-md overflow-hidden"
       >
         <button
           @click="toggleFaq(index)"
@@ -55,11 +63,10 @@ const toggleFaq = (index) => {
           <span class="font-medium">{{ faq.question }}</span>
         </button>
 
-        <div v-if="expandedIndex === index" class="px-6 py-4 bg-white ">
+        <div v-if="expandedIndex === index" class="px-6 py-4 bg-white">
           <p class="text-sm">{{ faq.answer }}</p>
         </div>
       </div>
     </div>
   </div>
-
 </template>

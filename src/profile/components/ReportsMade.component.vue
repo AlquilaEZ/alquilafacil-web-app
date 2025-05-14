@@ -8,16 +8,16 @@ const authenticationStore = useAuthenticationStore();
 const reports = ref([]);
 const reportsApiService = new ReportsApiService();
 
-onMounted(() => {
-  const userId = authenticationStore.currentUserId;
-  reports.value = reportsApiService.getByUserId(userId);
+onMounted(async() => {
+  const userId = authenticationStore.userId;
+  reports.value = await reportsApiService.getByUserId(userId);
 });
 
 </script>
 
 <template>
   <div class="w-full p-4 flex flex-col gap-10">
-    <h2 class="text-xl md:text-4xl font-bold mb-6">
+    <h2 class="text-xl md:text-4xl font-bold text-center mb-6">
       Reportes realizados
     </h2>
     <div v-if="reports.length > 0" class="w-full grid grid-cols-1 md:grid-cols-2 gap-18 justify-center items-center">

@@ -1,4 +1,4 @@
-const cloudName = "ducsr2p2w"; 
+const cloudName = "ddd2yf0ii"; 
 const uploadPreset = "ml_default";
 
 export const cloudinaryWidget = () =>

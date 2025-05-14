@@ -151,7 +151,7 @@ const cancelReservation = async () => {
             class="bg-(--primary-color) rounded-md py-5 text-white text-xl hover:cursor-pointer hover:bg-red-600 transition duration-300 ease-in-out"
           >Cancelar reserva</button>
         </div>
-        <CreateCommentComponent :localId="local.id" v-if="new Date(reservation.endDate) < new Date()" />
+        <CreateCommentComponent :localId="local.id" v-if="new Date(reservation.endDate) < new Date() && local.userId !== userId" />
       </div>
     </div>
   </main>

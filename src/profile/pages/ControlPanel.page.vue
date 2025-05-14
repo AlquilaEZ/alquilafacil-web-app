@@ -53,7 +53,7 @@ const handleLogout = () => {
   <main class="w-full min-h-[80dvh] px-4 sm:px-8 md:px-10 lg:px-16 py-10 gap-6 flex flex-col">
     <h1 class="text-2xl">Panel de control</h1>
     <div class="w-full flex gap-4">
-      <div class="flex items-center shadow-lg rounded-lg px-1 md:px-4 py-4 gap-2 w-1/4 max-h-160">
+      <div class="flex items-center shadow-lg rounded-lg px-1 md:px-4 py-4 gap-2 w-1/4 max-h-180">
         <ul v-if="userId !== null" class="flex flex-col w-full gap-4 text-xs sm:text-sm md:text-lg">
           <li
             v-for="([key, label]) in Object.entries(options)"

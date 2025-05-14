@@ -23,7 +23,7 @@ const toggleEdit = () => {
 </script>
 
 <template>
-  <div class="flex justify-between items-center gap-4 border-b pb-2">
+  <div class="flex justify-between items-center gap-4 border-b pb-2 col-span-1 md:col-span-2 lg:col-span-1">
     <div class="flex flex-col justify-end-safe gap-3 w-full">
       <label class="text-base font-medium">{{ label }}:</label>
 
