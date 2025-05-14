@@ -12,6 +12,7 @@ const localResponse = new LocalResponse(props.local);
 
 const isFavorite = ref(false);
 
+//Verifica si el espacio esta guardado como favorito
 const checkIfFavorite = () => {
   const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
   isFavorite.value = favorites.some(fav => fav.id === localResponse.id);
