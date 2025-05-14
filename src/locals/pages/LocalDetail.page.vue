@@ -109,7 +109,6 @@ const reserveLocal = async () => {
   <NavbarComponent />
   <main class="px-4 sm:px-8 md:px-10 lg:px-16 py-10 w-full min-h-[80dvh] flex flex-col gap-6">
     <h1 class="text-3xl font-semibold">Detalles del local:</h1>
-
     <div class="w-full flex flex-col md:flex-row gap-6">
       <div class="w-full md:w-2/3 flex flex-col shadow-lg bg-white rounded-lg p-4">
         <img :src="local.photoUrl" alt="Imagen del local" class="w-full h-90 object-cover rounded-lg" />
