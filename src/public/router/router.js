@@ -12,6 +12,7 @@ const routes = [
   { path: '/district/:districtId', meta: { title: "Búsqueda por distrito"}, component: () => import('@/locals/pages/DistrictSearch.page.vue') },
   { path: '/publish', meta: { title: "Publicar"}, component: () => import('@/locals/pages/Publish.page.vue') },
   { path: '/local/:id', meta: { title: "Información de espacio" }, component: () => import('@/locals/pages/LocalDetail.page.vue') },
+  { path: '/local/:id/monitoring', meta: { title: "Monitoreo del local" }, component: () => import('@/locals/pages/LocalMonitoring.page.vue') },
   { path: '/comments/:localId', meta: { title: "Comentarios"}, component: () => import('@/locals/pages/Comments.page.vue') },
   { path: '/calendar' , meta: { title: "Calendario"}, component: () => import('@/profile/pages/Calendar.page.vue') },
   { path: '/notifications', meta: { title: "Notificaciones"}, component: () => import('@/notification/pages/Notifications.page.vue') },

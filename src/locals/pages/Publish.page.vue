@@ -34,6 +34,9 @@ const localData = ref({
   userId: '',
   features: [],
   capacity: '',
+  noiseLevel: '',          // ← nuevo
+  smokeDetection: false,   // ← nuevo
+  restrictedArea: '',      // ← nuevo
 })
 
 const pageNumber = ref(1);
@@ -85,7 +88,7 @@ const publishLocal = async () => {
     <Step4Component v-if="pageNumber === 4" v-model:country="localData.country" v-model:city="localData.city" v-model:district="localData.district" v-model:street="localData.street"/>
     <Step5Component v-if="pageNumber === 5" />
     <Step6Component v-if="pageNumber === 6" v-model:photoUrl="localData.photoUrl" />
-    <Step7Component v-if="pageNumber === 7" v-model:localName="localData.localName" v-model:descriptionMessage="localData.descriptionMessage" v-model:capacity="localData.capacity" v-model:features="localData.features" />
+    <Step7Component v-if="pageNumber === 7" v-model:localName="localData.localName" v-model:descriptionMessage="localData.descriptionMessage" v-model:capacity="localData.capacity" v-model:features="localData.features"  v-model:noiseLevel="localData.noiseLevel"  v-model:smokeDetection="localData.smokeDetection"  v-model:restrictedArea="localData.restrictedArea"/>
     <Step8Component v-if="pageNumber === 8" />
     <Step9Component v-if="pageNumber === 9" v-model:price="localData.price" />
     <div v-if="pageNumber > 1 && pageNumber<10" class="flex gap-10 mt-10">

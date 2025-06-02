@@ -1,5 +1,5 @@
 export class LocalResponse {
-  constructor({id, streetAddress, localName, cityPlace, nightPrice, photoUrl, descriptionMessage, localCategoryId, userId, userUsername, features, capacity}) {
+  constructor({id, streetAddress, localName, cityPlace, nightPrice, photoUrl, descriptionMessage, localCategoryId, userId, userUsername, features, capacity, noiseLevel, smokeDetection, restrictedArea}) {
     this.id = id;
     this.streetAddress = streetAddress;
     this.localName = localName;
@@ -12,5 +12,8 @@ export class LocalResponse {
     this.userUsername = userUsername;
     this.features = features;
     this.capacity = capacity;
+    this.noiseLevel = noiseLevel;
+    this.smokeDetection = smokeDetection;
+    this.restrictedArea = restrictedArea;
   }
 }

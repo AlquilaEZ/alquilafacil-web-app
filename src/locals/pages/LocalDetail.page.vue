@@ -127,6 +127,15 @@ const reserveLocal = async () => {
 
       <!-- Panel lateral -->
       <div class="flex flex-col justify-center gap-4 shadow-lg bg-white rounded-lg p-4 w-full md:w-1/3  overflow-y-auto">
+        
+        <div v-if="isLoaded && authenticationStore.userId === local.userId" class="flex flex-col gap-5">
+          <RouterLink :to="`/local/${local.id}/monitoring`"
+            class="bg-[var(--secondary-color)] rounded-md py-5 text-white text-xl text-center hover:cursor-pointer hover:bg-[var(--secondary-color-hover)] transition duration-300 ease-in-out">
+            Monitoreo del Local
+          </RouterLink>
+      </div>
+
+        
         <h2 class="text-2xl font-semibold">Opciones:</h2>
         <div class="flex flex-col gap-5 text-xl">
           <RouterLink :to="`/comments/${local.id}`" class="text-[var(--primary-color)] hover:underline">
@@ -136,6 +145,8 @@ const reserveLocal = async () => {
             Reportar espacio >
           </RouterLink>
         </div>
+
+        
 
         <!-- Fechas -->
         <div v-if="isLoaded && authenticationStore.userId !== local.userId" class="flex flex-col gap-5">

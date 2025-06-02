@@ -1,5 +1,21 @@
 export class LocalRequest {
-  constructor({district, street, localName, country, city, price, photoUrl, descriptionMessage, localCategoryId, userId, features, capacity}) {
+  constructor({
+    district,
+    street,
+    localName,
+    country,
+    city,
+    price,
+    photoUrl,
+    descriptionMessage,
+    localCategoryId,
+    userId,
+    features,
+    capacity,
+    noiseLevel,
+    smokeDetection,
+    restrictedArea,
+  }) {
     this.district = district;
     this.street = street;
     this.localName = localName;
@@ -12,5 +28,10 @@ export class LocalRequest {
     this.userId = userId;
     this.features = features.join(',');
     this.capacity = parseInt(capacity);
+
+    // Nuevos campos:
+    this.noiseLevel = noiseLevel ? parseFloat(noiseLevel) : null;
+    this.smokeDetection = !!smokeDetection; // asegura booleano
+    this.restrictedArea = restrictedArea || null;
   }
 }
