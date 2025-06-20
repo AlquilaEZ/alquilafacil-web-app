@@ -19,6 +19,7 @@ const routes = [
   { path: '/reservation-details', meta: { title: "Detalles de reserva"}, component: () => import('@/booking/pages/ReservationDetails.page.vue') },
   { path: '/purchase-subscription/:planId', meta: { title: "Comprar suscripción"}, component: () => import('@/subscriptions/pages/SubscriptionPurchase.page.vue') },
   { path: '/report/:localId', meta: { title: "Reportar"}, component: () => import('@/locals/pages/Report.page.vue') },
+  { path: '/monitoring/:localId', meta: { title: "Monitoreo"}, component: () => import('@/management/pages/LocalManagement.page.vue') },
 ]
 
 const router = createRouter({
