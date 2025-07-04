@@ -4,7 +4,11 @@ import { useRouter } from 'vue-router';
 import { LocalResponse } from '../model/local.response';
 
 const props = defineProps({
-  local: Object
+  local: Object,
+  isLoaded: {
+    type: Boolean,
+    default: true
+  }
 });
 
 const router = useRouter();
@@ -42,15 +46,15 @@ const addToFavorites = async () => {
 </script>
 
 <template>
-  <div
-    class="flex flex-col shadow-lg rounded-lg hover:shadow-xl transition duration-300 ease-in-out hover:cursor-pointer"
+  <div v-if="isLoaded"
+    class="flex flex-col shadow-lg rounded-lg hover:shadow-xl transition duration-300 ease-in-out hover:cursor-pointer bg-(--background-card-color)"
     @click="goToLocal"
   >
-    <img :src="localResponse.photoUrl" alt="Local Image" class="w-full h-50 object-cover rounded-lg" />
+    <img :src="localResponse.photoUrls[0]" alt="Local Image" class="w-full h-60 object-cover rounded-lg" />
     <div class="p-4 rounded-lg flex justify-between items-center">
       <div class="flex flex-col gap-1">
-        <h2 class="text-xl font-semibold">{{ localResponse.localName }}</h2>
-        <p>{{ localResponse.descriptionMessage }}</p>
+        <h2 class="text-xl font-semibold text-(--text-color)">{{ localResponse.localName }}</h2>
+        <p class="text-(--text-color)">{{ localResponse.address }}</p>
       </div>
       <button
         @click.stop="addToFavorites"
@@ -72,5 +76,11 @@ const addToFavorites = async () => {
         </svg>
       </button>
     </div>
+  </div>
+  <div v-else class="flex flex-col gap-4 shadow-lg rounded-lg p-4 animate-pulse bg-(--background-card-color)">
+    <div class="w-full h-48 skeleton rounded-lg"></div>
+    <div class="h-6 skeleton rounded w-3/4"></div>
+    <div class="h-4 skeleton rounded w-full"></div>
+    <div class="h-4 bg-skeleton rounded w-5/6"></div>
   </div>
 </template>

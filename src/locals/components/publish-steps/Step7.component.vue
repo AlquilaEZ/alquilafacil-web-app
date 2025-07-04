@@ -34,57 +34,57 @@ const removeFeature = (index) => {
 </script>
 
 <template>
-  <h1 class="text-3xl text-center font-semibold">Ahora, añade los detalles de tu espacio</h1>
-  <p class="text-lg text-center">Los títulos cortos funcionan mejor. No te preocupes, puedes modificarlo más adelante.</p>
-  <div class="flex flex-col w-full max-w-140">
+  <h1 class="text-3xl text-center font-semibold text-(--text-color)">Ahora, añade los detalles de tu espacio</h1>
+  <p class="text-lg text-center text-(--text-color)">Los títulos cortos funcionan mejor. No te preocupes, puedes modificarlo más adelante.</p>
+  <div class="flex flex-col w-full max-w-140 text-(--text-color)">
     <label for="localName" class="bg-(--background-color) w-22 text-lg font-semibold relative top-4 left-2 px-2">Nombre</label>
     <input
       type="text"
       id="localName"
       :value="props.localName"
       @input="emit('update:localName', $event.target.value)"
-      class="border border-gray-300 rounded px-4 py-4"
+      class="border border-gray-300 rounded px-4 py-4 text-(--text-color)"
       placeholder="Ingresa el nombre de tu local"
     />
   </div>
 
-  <div class="flex flex-col w-full max-w-140">
+  <div class="flex flex-col w-full max-w-140 text-(--text-color)">
     <label for="descriptionMessage" class="bg-(--background-color) w-30 text-lg font-semibold relative top-4 left-2 px-2">Descripción</label>
     <input
       type="text"
       id="descriptionMessage"
       :value="props.descriptionMessage"
       @input="emit('update:descriptionMessage', $event.target.value)"
-      class="border border-gray-300 rounded px-4 py-4"
+      class="border border-gray-300 rounded px-4 py-4 text-(--text-color)"
       placeholder="Ingresa la descripción de tu local"
     />
   </div>
 
-  <div class="flex flex-col w-full max-w-140">
+  <div class="flex flex-col w-full max-w-140 text-(--text-color)">
     <label for="capacity" class="bg-(--background-color) w-16 text-lg font-semibold relative top-4 left-2 px-2">Aforo</label>
     <input
       type="number"
       id="capacity"
       :value="props.capacity"
       @input="emit('update:capacity', $event.target.value)"
-      class="border border-gray-300 rounded px-4 py-4"
+      class="border border-gray-300 rounded px-4 py-4 text-(--text-color)"
       placeholder="Ingresa el aforo"
       min="1"
     />
   </div>
-  <div class="flex flex-col w-full max-w-140 mt-6">
+  <div class="flex flex-col w-full max-w-140 mt-6 text-(--text-color)">
     <label class="text-lg font-semibold">Características</label>
     <div class="flex items-center gap-2 mt-2">
       <input
         v-model="newFeature"
         @keyup.enter="addFeature"
         type="text"
-        placeholder="Agregar característica"
-        class="flex-1 border border-gray-300 rounded px-3 py-2"
+        placeholder="Agregar característica (Dimensiones del local, servicios, etc.)"
+        class="flex-1 border border-gray-300 rounded px-3 py-2 text-(--text-color)"
       />
       <button
         @click="addFeature"
-        class="text-xl font-bold px-3 py-2 rounded bg-gray-100 hover:bg-gray-200 border"
+        class="text-xl font-bold px-3 py-2 rounded bg-(--button-color-hover) hover:bg-(--text-button-color) border transition"
       >
         +
       </button>

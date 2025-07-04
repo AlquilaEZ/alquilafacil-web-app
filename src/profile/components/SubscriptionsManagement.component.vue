@@ -40,11 +40,11 @@ const activeSubscriptionStatus = async (subscriptionId) => {
 
 <template>
   <div class="w-full p-4 flex flex-col gap-10">
-    <h2 class="text-xl md:text-4xl font-bold text-center mb-6">
+    <h2 class="text-xl md:text-4xl font-bold text-center mb-6 text-(--text-color)">
       Control de suscripciones pendientes
     </h2>
 
-    <div v-if="isLoading" class="text-center text-gray-500">
+    <div v-if="isLoading" class="text-center text-(--text-color)">
       Cargando suscripciones...
     </div>
 
@@ -53,7 +53,7 @@ const activeSubscriptionStatus = async (subscriptionId) => {
         <div
           v-for="subscription in subscriptions"
           :key="subscription.id"
-          class="w-full px-10 py-4 bg-white shadow-md rounded-lg flex items-center justify-between transition duration-300 ease-in-out"
+          class="w-full px-10 py-4 bg-(--background-color) shadow-md rounded-lg flex items-center justify-between transition duration-300 ease-in-out"
         >
           <div class="flex flex-col gap-4 w-full">
             <a :href="subscription.voucherImageUrl" target="_blank">
@@ -74,7 +74,7 @@ const activeSubscriptionStatus = async (subscriptionId) => {
           </div>
         </div>
       </div>
-      <div v-else class="text-center text-gray-500">
+      <div v-else class="text-center text-(--text-color)">
         No hay suscripciones pendientes.
       </div>
     </div>

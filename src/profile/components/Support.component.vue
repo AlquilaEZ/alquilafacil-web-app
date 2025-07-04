@@ -1,72 +1,88 @@
 <script setup>
-import { ref } from 'vue';
+import { watch, ref } from 'vue';
+import { ProfileResponse } from '../model/profile.response';
+import EditableProfileField from './EditableProfileField.component.vue';
+import { ProfilesApiService } from '../services/profiles-api.service';
+import { useAuthenticationStore } from '../../auth/services/authentication.store';
+import { ProfileRequest } from '../model/profile.request';
 
-const faqs = ref([
-  {
-    question: "¿Cómo reservo un espacio?",
-    answer:
-      "Primero debes iniciar sesión, seleccionar el espacio deseado y completar la información de reserva (fecha y horario). Luego deberás realizar el depósito al número de cuenta indicado y subir el comprobante de pago para su validación.",
-  },
-  {
-    question: "¿Qué sucede después de subir el comprobante de pago?",
-    answer:
-      "El propietario del espacio validará el comprobante. Si todo es correcto, la reserva quedará confirmada. En caso de problemas o fraude, el propietario puede rechazarla.",
-  },
-  {
-    question: "¿AlquilaFácil gestiona el dinero o reembolsa pagos?",
-    answer:
-      "No. AlquilaFácil no retiene ni transfiere dinero. Todos los pagos se hacen directamente al propietario, por lo que es importante verificar bien los datos antes de transferir.",
-  },
-  {
-    question: "¿Cómo activo una suscripción premium?",
-    answer:
-      "Realiza el pago correspondiente y sube el comprobante. Un administrador validará la información y activará tu suscripción manualmente.",
-  },
-  {
-    question: "¿Qué beneficios tengo como usuario premium?",
-    answer:
-      "Acceso prioritario a espacios, reservas protegidas que no pueden ser modificadas por el propietario, y funciones adicionales dentro de la plataforma.",
-  },
-  {
-    question: "¿Qué hago si sospecho de un fraude?",
-    answer:
-      "Puedes reportar el local desde la sección de detalles. El equipo revisará el caso y tomará medidas si corresponde. Reportes falsos pueden llevar a sanciones.",
-  },
-  {
-    question: "¿Puedo posponer una reserva?",
-    answer:
-      "Sí, pero solo si la reserva no es premium. Las reservas estándar se pueden posponer desde el calendario si están resaltadas en azul en un máximo de una hora.",
-  },
-]);
+const props = defineProps({
+  profile: Object,
+});
 
-const expandedIndex = ref(null);
+const profileResponse = ref(null);
+const profilesApiService = new ProfilesApiService();
+const authenticationStore = useAuthenticationStore();
+const isLoaded = ref(false);
 
-const toggleFaq = (index) => {
-  expandedIndex.value = expandedIndex.value === index ? null : index;
+watch(
+  () => props.profile,
+  (newVal) => {
+    if (newVal && Object.keys(newVal).length) {
+      profileResponse.value = new ProfileResponse(newVal);
+      isLoaded.value = true;
+    }
+  },
+  { immediate: true }
+);
+
+const updateProfile = async () => {
+  const profileRequest = new ProfileRequest(profileResponse.value);
+  await profilesApiService.update(authenticationStore.userId, profileRequest);
+  alert('Perfil actualizado correctamente');  
 };
+
 </script>
 
 <template>
-  <div class="px-4 sm:px-6 md:px-12 lg:px-24 py-10 min-h-[80dvh]">
-    <h3 class="text-xl font-semibold text-center mb-8">Soporte - Preguntas frecuentes</h3>
+  <div v-if="isLoaded" class="w-full p-4 flex flex-col gap-10">
+    <h2 class="text-xl md:text-4xl font-bold text-center mb-6 text-(--text-color)">
+      Bienvenido, {{  profileResponse.fullName }}
+    </h2>
 
-    <div class="max-w-3xl mx-auto space-y-4">
-      <div
-        v-for="(faq, index) in faqs"
-        :key="index"
-        class="border border-gray-300 rounded-md overflow-hidden"
+    <form class="grid grid-cols-1 md:grid-cols-2 gap-10 xl:gap-18 justify-center items-center">
+      <EditableProfileField
+        v-model="profileResponse.name"
+        label="Nombre"
+      />
+      <EditableProfileField
+        v-model="profileResponse.fatherName"
+        label="Apellido paterno"
+      />
+      <EditableProfileField
+        v-model="profileResponse.motherName"
+        label="Apellido materno"
+      />
+      <EditableProfileField
+        v-model="profileResponse.phone"
+        label="Teléfono"
+      />
+      <EditableProfileField
+        v-model="profileResponse.documentNumber"
+        label="Número de documento"
+      />
+      <EditableProfileField
+        v-model="profileResponse.dateOfBirth"
+        label="Fecha de nacimiento"
+      />
+      <EditableProfileField
+        v-model="profileResponse.bankAccountNumber"
+        label="Código de cuenta bancaria"
+      />
+      <EditableProfileField
+        v-model="profileResponse.interbankAccountNumber"
+        label="Código de cuenta interbancaria"
+      />
+      <button 
+        type="button" 
+        @click="updateProfile"
+        class="bg-(--secondary-color) hover:bg-(--secondary-color-hover) transition text-white p-4 rounded-md hover:cursor-pointer md:col-span-2"
       >
-        <button
-          @click="toggleFaq(index)"
-          class="w-full text-left px-6 py-4 hover:cursor-pointer"
-        >
-          <span class="font-medium">{{ faq.question }}</span>
-        </button>
-
-        <div v-if="expandedIndex === index" class="px-6 py-4 bg-white">
-          <p class="text-sm">{{ faq.answer }}</p>
-        </div>
-      </div>
-    </div>
+        Guardar cambios
+      </button>
+    </form>
+  </div>
+  <div v-else class="w-full p-4 flex justify-center items-center">
+    <p class="text-gray-500 text-xl">Cargando perfil...</p>
   </div>
 </template>

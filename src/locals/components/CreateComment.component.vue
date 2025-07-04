@@ -34,7 +34,7 @@ const publishComment = async () => {
 
 </script>
 <template>
-  <div class="flex flex-col w-full gap-4 mt-5">
+  <div class="flex flex-col w-full gap-4 mt-5 text-(--text-color)">
     <h3 class="text-2xl font-semibold">Publicar comentario</h3>
 
     <label for="commentText" class="text-lg font-medium">Escribe tu comentario:</label>
@@ -42,7 +42,7 @@ const publishComment = async () => {
       id="commentText"
       v-model="text"
       placeholder="Comparte tu experiencia..."
-      class="w-full p-3 border border-gray-300 rounded-md resize-y min-h-[100px]"
+      class="w-full p-3 border border-gray-300 rounded-md resize-y min-h-[100px] text-(--text-color)"
     ></textarea>
 
     <label class="text-lg font-medium">Calificación:</label>

@@ -108,9 +108,14 @@ onMounted(async () => {
 
 <style>
   :root {
-    --sx-color-primary: #fb9e49 !important;
-    --sx-color-primary-container: #fab473 !important;
-    --sx-color-surface-dim: #fab473 !important;
+    --sx-color-background: var(--background-card-color) !important;
+    --sx-color-primary: var(--secondary-color) !important;
+    --sx-color-primary-container: var(--secondary-color) !important;
+    --sx-color-surface-dim: var(--secondary-color) !important;
+    --sx-internal-color-text: var(--text-color) !important;
+    --sx-color-on-background: var(--text-color) !important;
+    --sx-color-neutral: var(--text-color) !important;
+    --sx-color-on-primary-container: var(--text-color) !important;
   }
   .sx-vue-calendar-wrapper {
 
