@@ -12,19 +12,19 @@ import CalendarComponent from '../components/Calendar.component.vue';
       <div class="flex flex-col">
         <div class="flex gap-2 items-center">
           <div class="min-w-10 h-10 bg-(--primary-color)"></div>
-          <p>Tus reservas</p>
+          <p class="text-xl text-(--text-color)">Tus reservas</p>
         </div>
       </div>
       <div class="flex flex-col">
         <div class="flex gap-2  items-center">
           <div class="min-w-10 h-10 bg-blue-500"></div>
-          <p>Reserva de tu espacio</p>
+          <p class="text-xl text-(--text-color)">Reserva de tu espacio</p>
         </div>
       </div>
       <div class="flex flex-col">
         <div class="flex gap-2 items-center">
           <div class="min-w-10 h-10 bg-(--secondary-color)"></div>
-          <p>Reserva de un espacio por usuario premium</p>
+          <p class="text-xl text-(--text-color)">Reserva de un espacio por usuario premium</p>
         </div>
       </div>
     </div>

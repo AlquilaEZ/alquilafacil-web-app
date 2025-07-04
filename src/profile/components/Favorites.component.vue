@@ -12,7 +12,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <h2 class="text-xl md:text-2xl font-semibold text-center mb-6">
+  <h2 class="text-xl md:text-2xl font-semibold text-center mb-6 text-(--text-color)">
       Encuentra con facilidad tu espacio ideal entre tus favoritos
   </h2>
   <div v-if="favorites.length > 0" class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -23,6 +23,6 @@ onMounted(() => {
     />
   </div>
   <div v-else class="w-full flex items-center justify-center">
-    <p class="text-lg">No tienes favoritos aún.</p>
+    <p class="text-lg text-(--text-color)">No tienes favoritos aún.</p>
   </div>
 </template>

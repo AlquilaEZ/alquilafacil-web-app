@@ -1,16 +1,30 @@
 export class LocalRequest {
-  constructor({district, street, localName, country, city, price, photoUrl, descriptionMessage, localCategoryId, userId, features, capacity}) {
-    this.district = district;
-    this.street = street;
+  constructor({
+    localName,
+    descriptionMessage,
+    country,
+    city,
+    district,
+    street,
+    price,
+    capacity,
+    photoUrls,
+    features,
+    localCategoryId,
+    userId
+  }) {
     this.localName = localName;
+    this.descriptionMessage = descriptionMessage;
     this.country = country;
     this.city = city;
+    this.district = district;
+    this.street = street;
     this.price = parseFloat(price);
-    this.photoUrl = photoUrl;
-    this.descriptionMessage = descriptionMessage;
+    this.capacity = parseInt(capacity);
+    this.photoUrls = photoUrls;
+    this.features = features.join(',');
     this.localCategoryId = localCategoryId;
     this.userId = userId;
-    this.features = features.join(',');
-    this.capacity = parseInt(capacity);
+    
   }
 }

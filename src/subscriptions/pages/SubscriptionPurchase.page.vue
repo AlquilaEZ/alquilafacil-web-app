@@ -30,9 +30,9 @@ onMounted(async () => {
 
 const openUploadWidget = async () => {
   try {
-    const secureUrl = await cloudinaryWidget();
-    console.log("URL segura:", secureUrl);
-    voucherImageUrl.value = secureUrl;
+    const secureUrls = await cloudinaryWidget();
+    console.log("URL segura:", secureUrls);
+    voucherImageUrl.value = secureUrls[0];
   } catch (error) {
     console.error("Error al subir imagen:", error);
   }
@@ -57,7 +57,7 @@ const purchaseSubscription = async () => {
 
 <template>
   <NavbarComponent />
-  <div class="flex flex-col justify-center items-center gap-4 w-full h-full p-4 sm:p-8 md:p-10 lg:p-16">
+  <main class="flex flex-col justify-center items-center gap-4 w-full h-full p-4 sm:p-8 md:p-10 lg:p-16 text-(--text-color)">
     <h1 class="text-3xl text-center font-semibold">Compra de suscripción</h1>
     <p class="text-lg text-center">Para poder realizar la compra del plan, adjunta la foto del voucher de pago.</p>
     <p class="text-lg text-center">El plan seleccionado es: {{ plan.name }}</p>
@@ -68,18 +68,18 @@ const purchaseSubscription = async () => {
       <li class="text-xl font-semibold">Cuenta interbancaria: {{ bankAccounts.interbankAccountNumber }}</li>
     </ul>
     <div class="flex flex-col gap-8 justify-center mt-6">
-      <button @click="openUploadWidget" class="flex flex-col p-10 shadow-2xl hover:cursor-pointer">
+      <button @click="openUploadWidget" class="flex flex-col p-10 shadow-xl hover:cursor-pointer">
         <img src="/svgs/camera.svg" alt="camera" class="w-1/2 max-w-30 mx-auto mt-4" />
-        <span class="text-center text-gray-700 text-2xl">Adjuntar imagen del voucher</span>
+        <span class="text-center text-(--text-color) text-2xl">Adjuntar imagen del voucher</span>
       </button>
       <button
         :disabled="!voucherImageUrl"
-        class="bg-[var(--secondary-color)] rounded-md py-5 text-white text-xl hover:cursor-pointer hover:bg-[var(--secondary-color-hover)] transition duration-300 ease-in-out disabled:opacity-50 disabled:cursor-not-allowed"
+        class="bg-(--secondary-color) rounded-md py-5 text-white text-xl hover:cursor-pointer hover:bg-(--secondary-color-hover) transition duration-300 ease-in-out disabled:opacity-50 disabled:cursor-not-allowed"
         @click="purchaseSubscription"
       >
       Comprar suscripción
       </button>
     </div>
-  </div>
+  </main>
   <FooterComponent />
 </template>

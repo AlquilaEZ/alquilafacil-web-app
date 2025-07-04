@@ -9,9 +9,9 @@ const emit = defineEmits([
 </script>
 
 <template>
-  <h1 class="text-3xl text-center font-semibold">Ponle un precio a tu espacio</h1>
-  <p class="text-lg text-center">Podrás cambiarlo en cualquier momento.</p>
-  <div class="flex justify-center items-center gap-4 w-full max-w-120">
+  <h1 class="text-3xl text-center font-semibold text-(--text-color)">Ponle un precio a tu espacio</h1>
+  <p class="text-lg text-center text-(--text-color)">Podrás cambiarlo en cualquier momento.</p>
+  <div class="flex justify-center items-center gap-4 w-full max-w-120 text-(--text-color)">
     <label for="price">S/.</label>
     <input
       type="number"
@@ -23,6 +23,6 @@ const emit = defineEmits([
       min="1"
     />
   </div>
-  <p class="text-lg text-center">Por hora</p>
+  <p class="text-lg text-center text-(--text-color)">Por hora</p>
   
 </template>

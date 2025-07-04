@@ -10,6 +10,7 @@ const props = defineProps({
 const emit = defineEmits(['update:localCategoryId']);
 
 const localCategories = ref([]);
+const isLoaded = ref(false);
 const localCategoriesApiService = new LocalCategoriesApiService();
 
 const selectCategory = (id) => {
@@ -19,7 +20,7 @@ const selectCategory = (id) => {
 onMounted(async ()=> {
   try {
     localCategories.value = await localCategoriesApiService.getAll();
-    console.log(localCategories.value)
+    isLoaded.value = true;
   } catch (error) {
     console.error('Error cargando categorías:', error);
   }
@@ -28,14 +29,21 @@ onMounted(async ()=> {
 </script>
 
 <template>
-  <h1 class="text-3xl text-center font-semibold">¿Cuál de estas opciones describe mejor tu espacio?</h1>
-  <div class="grid sm:grid-cols-2 gap-4">
-    <LocalCategoryCardComponent
-      v-for="localCategory in localCategories"
-      :key="localCategory.id"
-      :localCategory="localCategory"
-      :isSelected="localCategory.id === props.localCategoryId"
-      @click="selectCategory(localCategory.id)"
-    />
-  </div>
+  <h1 class="text-3xl text-center font-semibold text-(--text-color)">¿Cuál de estas opciones describe mejor tu espacio?</h1>
+  <template v-if="isLoaded">
+    <div class="grid sm:grid-cols-2 gap-4">
+      <LocalCategoryCardComponent
+        v-for="localCategory in localCategories"
+        :key="localCategory.id"
+        :localCategory="localCategory"
+        :isSelected="localCategory.id === props.localCategoryId"
+        @click="selectCategory(localCategory.id)"
+      />
+    </div>
+  </template>
+  <template v-else>
+    <div class="grid sm:grid-cols-2 gap-4">
+      <LocalCategoryCardComponent v-for="n in 4" :key="n" :localCategory="{}" :isLoaded="false" />
+    </div>
+  </template>
 </template>

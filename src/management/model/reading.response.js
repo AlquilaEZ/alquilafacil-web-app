@@ -3,6 +3,6 @@ export class ReadingResponse {
     this.localId = localId;
     this.sensorTypeId = sensorTypeId;
     this.message = message;
-    this.timestamp = timestamp;
+    this.timestamp =`${timestamp.split('T')[0] } ${timestamp.split('T')[1].split(':')[0]}:${timestamp.split('T')[1].split(':')[1]}`
   }
 }

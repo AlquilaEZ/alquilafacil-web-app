@@ -65,27 +65,27 @@ const publishReport = async () => {
 
 <template>
   <NavbarComponent />
-  <main class="px-4 sm:px-8 md:px-10 lg:px-16 py-10 w-full min-h-[80dvh] flex flex-col gap-6">
+  <main class="px-4 sm:px-8 md:px-10 lg:px-16 py-10 w-full min-h-[80dvh] flex flex-col gap-6 text-(--text-color)">
     <h1 class="text-3xl text-center font-semibold">Reportar {{ local.localName }}</h1>
 
     <div class="max-w-xl mx-auto w-full flex flex-col gap-4">
-      <label class="flex flex-col">
-        <span class="font-medium">Título del reporte</span>
+      <label class="flex flex-col gap-2">
+        <span class="font-medium text-2xl">Título del reporte</span>
         <input
           v-model="title"
           type="text"
           placeholder="Escribe el título..."
-          class="border border-gray-300 p-2 rounded"
+          class="border border-gray-300 p-4 rounded text-xl"
         />
         <span class="text-red-500 text-sm" v-if="errors.title">{{ errors.title }}</span>
       </label>
 
-      <label class="flex flex-col">
-        <span class="font-medium">Descripción del reporte</span>
+      <label class="flex flex-col gap-2">
+        <span class="font-medium text-2xl">Descripción del reporte</span>
         <textarea
           v-model="description"
           placeholder="Describe el problema o situación..."
-          class="border border-gray-300 p-2 rounded min-h-[120px]"
+          class="border border-gray-300 p-4 rounded text-xl min-h-60"
         ></textarea>
         <span class="text-red-500 text-sm" v-if="errors.description">{{ errors.description }}</span>
       </label>
@@ -94,7 +94,7 @@ const publishReport = async () => {
 
       <button
         @click="publishReport"
-        class="bg-red-600 text-white py-2 px-4 rounded hover:bg-red-700 hover:cursor-pointer transition-colors w-fit self-end"
+        class="bg-(--primary-color) text-white py-4 px-4 rounded hover:bg-(--primary-color-hover) hover:cursor-pointer transition-colors w-full text-xl"
       >
         Enviar reporte
       </button>

@@ -4,7 +4,6 @@
  */
 
 import http from '../../shared/services/http-common.js';
-import { ReadingResponse } from '../model/reading.response.js';
 
 export class ReadingsApiService {
   async getByLocalId(localId) {

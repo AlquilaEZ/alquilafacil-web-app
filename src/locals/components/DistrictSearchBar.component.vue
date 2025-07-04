@@ -38,7 +38,7 @@ const goToDistrict = (district) => {
   <div class="relative flex items-center justify-center w-full h-full">
     <div class="px-2 py-2 flex items-center justify-between  
     w-full max-w-180
-    h-12 sm:h-14 rounded-lg border-2 border-[var(--background-color)] gap-1">
+    h-12 sm:h-14 rounded-lg border-2 border-white gap-1">
       <input
         v-model="query"
         type="text"
